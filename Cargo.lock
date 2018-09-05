@@ -1,0 +1,4 @@
+[[package]]
+name = "hab-shell"
+version = "0.1.0"
+
