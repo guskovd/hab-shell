@@ -1,6 +1,6 @@
 pkg_name=hab-shell
 pkg_origin=guskovd
-pkg_version='1.0.47'
+pkg_version='1.0.48'
 pkg_description="Habitat Shell"
 pkg_maintainer='Guskovd'
 pkg_upstream_url=""
