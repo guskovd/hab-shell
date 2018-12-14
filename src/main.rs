@@ -14,16 +14,15 @@ fn main() {
         .subcommand(SubCommand::with_name("install")
                     .about("hab pkg install wrapper")
                     .version("1.0")
-                    .help("build pkg")
         )
         .subcommand(SubCommand::with_name("build")
                     .arg(Arg::with_name("args")
+                         .help("optional hab pkg build args. (by default: '-R .')")
                          .multiple(true)
                          .allow_hyphen_values(true)
                          .last(true))
                     .about("hab pkg build wrapper")
                     .version("1.0")
-                    .help("build pkg")
         )
         .get_matches();
 
