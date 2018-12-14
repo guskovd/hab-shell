@@ -1,4 +1,5 @@
 extern crate clap;
+extern crate dotenv;
 
 use clap::{Arg, App, SubCommand};
 use std::os::unix::process::CommandExt;

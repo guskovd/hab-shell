@@ -5,3 +5,4 @@ authors = ["Danil Guskov <d.guskov@corp.mail.ru>"]
 
 [dependencies]
 clap = "=2.31.2"
+dotenv = "*"
