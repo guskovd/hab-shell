@@ -43,4 +43,5 @@ do_setup_environment() {
     push_runtime_env LD_LIBRARY_PATH "$(pkg_path_for core/libsodium)/lib"
     push_runtime_env LD_LIBRARY_PATH "$(pkg_path_for core/libarchive)/lib"
     push_runtime_env LD_LIBRARY_PATH "$(pkg_path_for core/openssl)/lib"
+    set_runtime_env HAB_SHELL_INTERPRETER "bash"
 }
