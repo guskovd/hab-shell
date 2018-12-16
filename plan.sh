@@ -1,6 +1,6 @@
 pkg_name=hab-shell
 pkg_origin=guskovd
-pkg_version='1.0.48'
+pkg_version='1.0.49'
 pkg_description="Habitat Shell"
 pkg_maintainer='Guskovd'
 pkg_upstream_url=""
@@ -8,6 +8,7 @@ pkg_upstream_url=""
 pkg_hab_shell_interpreter="bash"
 
 pkg_deps=(
+    core/sudo
     core/hab
     core/bash
     core/gawk
