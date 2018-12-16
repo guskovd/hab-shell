@@ -1,11 +1,14 @@
 extern crate clap;
 extern crate dotenv;
+extern crate habitat_core as hcore;
 
 use std::fs;
 use std::env;
+use std::path::{Path};
 use clap::{Arg, App, SubCommand};
 use std::os::unix::process::CommandExt;
 use std::process::{Command};
+use hcore::package::PackageArchive;
 
 static PLAN_SH_LOCK: &str = "plan.sh.lock";
 
@@ -32,6 +35,11 @@ fn main() {
         .subcommand(SubCommand::with_name("exec")
                     .about("hab pkg exec wrapper")
                     .version("1.0")
+                    .arg(Arg::with_name("args")
+                         .help("optional hab pkg build args. (by default: 'bash')")
+                         .multiple(true)
+                         .allow_hyphen_values(true)
+                         .last(true))
         )
         .subcommand(SubCommand::with_name("build")
                     .arg(Arg::with_name("args")
@@ -60,7 +68,6 @@ fn main() {
         lock().unwrap();
     } else if let Some(_matches) = matches.subcommand_matches("install") {
         println!("Installing...");
-        load_env();
         Command::new("sudo")
             .arg("hab")
             .arg("pkg")
@@ -68,8 +75,19 @@ fn main() {
             .arg(PLAN_SH_LOCK)
             .exec();
         
-    } else if let Some(_matches) = matches.subcommand_matches("exec") {
-        println!("Exec...");
+    } else if let Some(matches) = matches.subcommand_matches("exec") {
+        let mut args = matches.values_of("args").unwrap_or_default().collect::<Vec<_>>();
+        if args.is_empty() {
+            args = vec!("bash");
+        }
+        let ident = PackageArchive::new(Path::new(PLAN_SH_LOCK)).ident().unwrap();
+        println!("Welcome to Habitat Shell!");
+        Command::new("hab")
+            .arg("pkg")
+            .arg("exec")
+            .arg(format!("{}/{}/{}/{}", ident.origin, ident.name, ident.version.unwrap(), ident.release.unwrap()))
+            .args(args)
+            .exec();
     }
 
 }
