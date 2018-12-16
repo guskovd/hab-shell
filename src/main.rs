@@ -7,6 +7,8 @@ use clap::{Arg, App, SubCommand};
 use std::os::unix::process::CommandExt;
 use std::process::{Command};
 
+static PLAN_SH_LOCK: &str = "plan.sh.lock";
+
 fn pkg_artifact() -> String {
     format!("results/{}", env::var("pkg_artifact").unwrap())
 }
@@ -16,7 +18,7 @@ fn load_env() {
 }
 
 fn lock() -> std::io::Result<()> {
-    fs::copy(pkg_artifact(), "plan.sh.lock")?;
+    fs::copy(pkg_artifact(), PLAN_SH_LOCK)?;
     Ok(())
 }
 
@@ -59,7 +61,7 @@ fn main() {
             .arg("hab")
             .arg("pkg")
             .arg("install")
-            .arg(pkg_artifact())
+            .arg(PLAN_SH_LOCK)
             .exec();
     }
 
