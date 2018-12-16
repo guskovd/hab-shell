@@ -29,6 +29,10 @@ fn main() {
                     .about("hab pkg install wrapper")
                     .version("1.0")
         )
+        .subcommand(SubCommand::with_name("exec")
+                    .about("hab pkg exec wrapper")
+                    .version("1.0")
+        )
         .subcommand(SubCommand::with_name("build")
                     .arg(Arg::with_name("args")
                          .help("optional hab pkg build args. (by default: '-R .')")
@@ -63,6 +67,9 @@ fn main() {
             .arg("install")
             .arg(PLAN_SH_LOCK)
             .exec();
+        
+    } else if let Some(_matches) = matches.subcommand_matches("exec") {
+        println!("Exec...");
     }
 
 }
