@@ -59,11 +59,13 @@ fn main() {
             args = vec!("-R", ".");
         }
         println!("Building...");
-        Command::new("hab")
+        let mut build = Command::new("hab")
             .arg("studio")
             .arg("build")
             .args(args)
-            .exec();
+            .spawn()
+            .unwrap();
+        build.wait().unwrap();
         load_env();
         lock().unwrap();
     } else if let Some(_matches) = matches.subcommand_matches("install") {
@@ -80,7 +82,8 @@ fn main() {
         if args.is_empty() {
             args = vec!("bash");
         }
-        let ident = PackageArchive::new(Path::new(PLAN_SH_LOCK)).ident().unwrap();
+        let mut hart = PackageArchive::new(Path::new(PLAN_SH_LOCK));
+        let ident = hart.ident().unwrap();
         println!("Welcome to Habitat Shell!");
         Command::new("hab")
             .arg("pkg")
