@@ -1,0 +1,119 @@
+Script started on Fri Dec 14 17:59:48 2018
+   : Loading /src/plan.sh
+   hab-shell: Plan loaded
+   hab-shell: Validating plan metadata
+   hab-shell: Using HAB_BIN=/hab/pkgs/core/hab/0.69.0/20181127182011/bin/hab for installs, signing, and hashing
+   hab-shell: hab-plan-build setup
+   hab-shell: Writing pre_build file
+   hab-shell: Resolving build dependencies
+   hab-shell: Resolving run dependencies
+[1;33m» Installing core/hab[0m
+[1;32m☁ Determining[0m latest version of core/hab in the 'stable' channel
+[1;32m→ Using[0m core/hab/0.70.0/20181205193615
+[1;34m★ Install of core/hab/0.70.0/20181205193615 complete with 0 new packages installed.[0m
+   hab-shell: Resolved dependency 'core/hab' to /hab/pkgs/core/hab/0.70.0/20181205193615
+[1;33m» Installing core/bash[0m
+[1;32m☁ Determining[0m latest version of core/bash in the 'stable' channel
+[1;32m→ Using[0m core/bash/4.4.19/20180608092913
+[1;34m★ Install of core/bash/4.4.19/20180608092913 complete with 0 new packages installed.[0m
+   hab-shell: Resolved dependency 'core/bash' to /hab/pkgs/core/bash/4.4.19/20180608092913
+[1;33m» Installing core/gawk[0m
+[1;32m☁ Determining[0m latest version of core/gawk in the 'stable' channel
+[1;32m→ Using[0m core/gawk/4.2.0/20180608093856
+[1;34m★ Install of core/gawk/4.2.0/20180608093856 complete with 0 new packages installed.[0m
+   hab-shell: Resolved dependency 'core/gawk' to /hab/pkgs/core/gawk/4.2.0/20180608093856
+[1;33m» Installing core/grep[0m
+[1;32m☁ Determining[0m latest version of core/grep in the 'stable' channel
+[1;32m→ Using[0m core/grep/3.1/20180608092809
+[1;34m★ Install of core/grep/3.1/20180608092809 complete with 0 new packages installed.[0m
+   hab-shell: Resolved dependency 'core/grep' to /hab/pkgs/core/grep/3.1/20180608092809
+[1;33m» Installing guskovd/rust-nightly[0m
+[1;32m☁ Determining[0m latest version of guskovd/rust-nightly in the 'stable' channel
+[1;32m☛ Verifying[0m guskovd/rust-nightly/1.32.0-2018-12-13/20181214174458
+[1;32m↓ Downloading[0m guskovd-20170522132207 public origin key
+    78 B / 78 B | [=======================================] 100.00 % 1.92 MB/s  
+[1;32m☑ Cached[0m guskovd-20170522132207 public origin key
+[1;32m→ Using[0m core/binutils/2.30/20180608050633
+[1;32m→ Using[0m core/busybox-static/1.28.1/20180608102729
+[1;32m→ Using[0m core/cacerts/2018.03.07/20180608102212
+[1;32m→ Using[0m core/gcc-libs/7.3.0/20180608091701
+[1;32m→ Using[0m core/gcc/7.3.0/20180608051919
+[1;32m→ Using[0m core/glibc/2.27/20180608041157
+[1;32m→ Using[0m core/gmp/6.1.2/20180608051426
+[1;32m→ Using[0m core/libmpc/1.1.0/20180608051824
+[1;32m→ Using[0m core/linux-headers/4.15.9/20180608041107
+[1;32m→ Using[0m core/mpfr/4.0.1/20180608051629
+[1;32m→ Using[0m core/zlib/1.2.11/20180608050617
+[1;32m✓ Installed[0m guskovd/rust-nightly/1.32.0-2018-12-13/20181214174458
+[1;34m★ Install of guskovd/rust-nightly/1.32.0-2018-12-13/20181214174458 complete with 1 new packages installed.[0m
+   hab-shell: Resolved dependency 'guskovd/rust-nightly' to /hab/pkgs/guskovd/rust-nightly/1.32.0-2018-12-13/20181214174458
+[1;33m» Installing core/git[0m
+[1;32m☁ Determining[0m latest version of core/git in the 'stable' channel
+[1;32m→ Using[0m core/git/2.18.0/20181212192153
+[1;34m★ Install of core/git/2.18.0/20181212192153 complete with 0 new packages installed.[0m
+   hab-shell: Resolved dependency 'core/git' to /hab/pkgs/core/git/2.18.0/20181212192153
+[1;33m» Installing core/gcc[0m
+[1;32m☁ Determining[0m latest version of core/gcc in the 'stable' channel
+[1;32m→ Using[0m core/gcc/7.3.0/20180608051919
+[1;34m★ Install of core/gcc/7.3.0/20180608051919 complete with 0 new packages installed.[0m
+   hab-shell: Resolved dependency 'core/gcc' to /hab/pkgs/core/gcc/7.3.0/20180608051919
+[1;33m» Installing core/gcc-libs[0m
+[1;32m☁ Determining[0m latest version of core/gcc-libs in the 'stable' channel
+[1;32m→ Using[0m core/gcc-libs/7.3.0/20180608091701
+[1;34m★ Install of core/gcc-libs/7.3.0/20180608091701 complete with 0 new packages installed.[0m
+   hab-shell: Resolved dependency 'core/gcc-libs' to /hab/pkgs/core/gcc-libs/7.3.0/20180608091701
+   hab-shell: Setting up environment
+   hab-shell: Populating runtime environment from dependencies
+   hab-shell: Populating buildtime environment from dependencies
+   hab-shell: PUSH TO RUN
+   hab-shell: WARN: Using `:` as a separator for $LD_LIBRARY_PATH. If you would like to change this, add `HAB_ENV_LD_LIBRARY_PATH_SEPARATOR=<YOUR_SEPARATOR>` to your plan.
+   hab-shell: Layering runtime environment on top of system environment
+   hab-shell: Layering buildtime environment on top of system environment
+   hab-shell: Setting PATH=/hab/pkgs/core/hab/0.70.0/20181205193615/bin:/hab/pkgs/core/bash/4.4.19/20180608092913/bin:/hab/pkgs/core/gawk/4.2.0/20180608093856/bin:/hab/pkgs/core/grep/3.1/20180608092809/bin:/hab/pkgs/guskovd/rust-nightly/1.32.0-2018-12-13/20181214174458/bin:/hab/pkgs/core/git/2.18.0/20181212192153/bin:/hab/pkgs/core/gcc/7.3.0/20180608051919/bin:/hab/pkgs/core/glibc/2.27/20180608041157/bin:/hab/pkgs/core/ncurses/6.1/20180608091810/bin:/hab/pkgs/core/pcre/8.41/20180608092740/bin:/hab/pkgs/core/binutils/2.30/20180608050633/bin:/hab/pkgs/core/busybox-static/1.28.1/20180608102729/bin:/hab/pkgs/core/acl/2.2.52/20180608091922/bin:/hab/pkgs/core/attr/2.4.47/20180608091914/bin:/hab/pkgs/core/bzip2/1.0.6/20180608091727/bin:/hab/pkgs/core/coreutils/8.29/20180608092141/bin:/hab/pkgs/core/curl/7.62.0/20181212184320/bin:/hab/pkgs/core/db/5.3.28/20180608094030/bin:/hab/pkgs/core/expat/2.2.5/20180608094017/bin:/hab/pkgs/core/gdbm/1.14.1/20180608094002/bin:/hab/pkgs/core/gettext/0.19.8/20180608100147/bin:/hab/pkgs/core/less/530/20180608094202/bin:/hab/pkgs/core/libcap/2.25/20180608091936/bin:/hab/pkgs/core/openssh/7.5p1/20181212185150/bin:/hab/pkgs/core/openssh/7.5p1/20181212185150/sbin:/hab/pkgs/core/openssh/7.5p1/20181212185150/libexec:/hab/pkgs/core/openssl/1.0.2q/20181212183918/bin:/hab/pkgs/core/perl/5.26.1/20180608094208/bin:/hab/pkgs/core/xz/5.2.3/20180608100110/bin:/hab/pkgs/core/hab-plan-build/0.69.0/20181127183503/bin:/hab/pkgs/core/bash/4.3.42/20170513213519/bin:/hab/pkgs/core/binutils/2.25.1/20170513201927/bin:/hab/pkgs/core/bzip2/1.0.6/20170513212938/bin:/hab/pkgs/core/coreutils/8.25/20170513213226/bin:/hab/pkgs/core/file/5.24/20170513201915/bin:/hab/pkgs/core/findutils/4.4.2/20170513214305/bin:/hab/pkgs/core/gawk/4.1.3/20170513213646/bin:/hab/pkgs/core/grep/2.22/20170513213444/bin:/hab/pkgs/core/gzip/1.6/20170513214605/bin:/hab/pkgs/core/hab/0.69.0/20181127182011/bin:/hab/pkgs/core/rq/0.9.2/20170612005822/bin:/hab/pkgs/core/sed/4.2.2/20170513213123/bin:/hab/pkgs/core/tar/1.29/20170513213607/bin:/hab/pkgs/core/unzip/6.0/20180310001951/bin:/hab/pkgs/core/wget/1.19.1/20171024102323/bin:/hab/pkgs/core/xz/5.2.2/20170513214327/bin:/hab/pkgs/core/glibc/2.22/20170513201042/bin:/hab/pkgs/core/ncurses/6.0/20170513213009/bin:/hab/pkgs/core/acl/2.2.52/20170513213108/bin:/hab/pkgs/core/attr/2.4.47/20170513213059/bin:/hab/pkgs/core/libcap/2.24/20170513213120/bin:/hab/pkgs/core/pcre/8.38/20170513213423/bin:/hab/pkgs/core/less/481/20170513213936/bin:/hab/pkgs/core/libidn/1.32/20170513215043/bin:/hab/pkgs/core/openssl/1.0.2l/20171014213633/bin
+   hab-shell: Clean the cache
+   hab-shell: Setting build environment
+created directory: '/hab/cache/src/hab-shell-1.0.47'
+   hab-shell: Setting PREFIX=/hab/pkgs/hab-shell/hab-shell/1.0.47/20181214175948
+   hab-shell: Setting LD_RUN_PATH=/hab/pkgs/guskovd/rust-nightly/1.32.0-2018-12-13/20181214174458/lib:/hab/pkgs/core/git/2.18.0/20181212192153/lib:/hab/pkgs/core/gcc/7.3.0/20180608051919/lib:/hab/pkgs/core/gcc-libs/7.3.0/20180608091701/lib
+   hab-shell: Setting CFLAGS=-I/hab/pkgs/core/gcc/7.3.0/20180608051919/include
+   hab-shell: Setting CXXFLAGS=-I/hab/pkgs/core/gcc/7.3.0/20180608051919/include
+   hab-shell: Setting CPPFLAGS=-I/hab/pkgs/core/gcc/7.3.0/20180608051919/include
+   hab-shell: Setting LDFLAGS=-L/hab/pkgs/guskovd/rust-nightly/1.32.0-2018-12-13/20181214174458/lib -L/hab/pkgs/core/git/2.18.0/20181212192153/lib -L/hab/pkgs/core/gcc/7.3.0/20180608051919/lib -L/hab/pkgs/core/gcc-libs/7.3.0/20180608091701/lib
+   hab-shell: Setting PKG_CONFIG_PATH=/hab/pkgs/core/bash/4.4.19/20180608092913/lib/pkgconfig
+   hab-shell: Preparing to build
+   hab-shell: Building
+   hab-shell: Installing
+created directory: '/hab/pkgs/hab-shell/hab-shell/1.0.47/'
+created directory: '/hab/pkgs/hab-shell/hab-shell/1.0.47/20181214175948'
+   hab-shell: Writing configuration
+   hab-shell: Writing service management scripts
+   hab-shell: Stripping unneeded symbols from binaries and libraries
+   hab-shell: Building package metadata
+   hab-shell: Generating blake2b hashes of all files in the package
+   hab-shell: Generating signed metadata FILES
+[1;33m» Signing hab-shell_blake2bsums[0m
+[1;36m☛ Signing[0m hab-shell_blake2bsums with hab-shell-20180516112716 to create /hab/pkgs/hab-shell/hab-shell/1.0.47/20181214175948/FILES
+[1;34m★ Signed artifact /hab/pkgs/hab-shell/hab-shell/1.0.47/20181214175948/FILES.[0m
+   hab-shell: Creating manifest
+   hab-shell: Generating package artifact
+/hab/pkgs/core/tar/1.29/20170513213607/bin/tar: Removing leading `/' from member names
+/hab/cache/artifacts/.hab-shell-hab-shell-1.0.47-20181214175948-x86_64-linux.tar (1/1)
+  100 %           2304 B / 20.0 KiB = 0.113                                    
+[1;33m» Signing /hab/cache/artifacts/.hab-shell-hab-shell-1.0.47-20181214175948-x86_64-linux.tar.xz[0m
+[1;36m☛ Signing[0m /hab/cache/artifacts/.hab-shell-hab-shell-1.0.47-20181214175948-x86_64-linux.tar.xz with hab-shell-20180516112716 to create /hab/cache/artifacts/hab-shell-hab-shell-1.0.47-20181214175948-x86_64-linux.hart
+[1;34m★ Signed artifact /hab/cache/artifacts/hab-shell-hab-shell-1.0.47-20181214175948-x86_64-linux.hart.[0m
+'/hab/cache/artifacts/hab-shell-hab-shell-1.0.47-20181214175948-x86_64-linux.hart' -> '/src/results/hab-shell-hab-shell-1.0.47-20181214175948-x86_64-linux.hart'
+   hab-shell: hab-plan-build cleanup
+   hab-shell: 
+   hab-shell: Source Path: /src
+   hab-shell: Installed Path: /hab/pkgs/hab-shell/hab-shell/1.0.47/20181214175948
+   hab-shell: Artifact: /src/results/hab-shell-hab-shell-1.0.47-20181214175948-x86_64-linux.hart
+   hab-shell: Build Report: /src/results/last_build.env
+   hab-shell: SHA256 Checksum: 7271e0264a080f9ad0743dca2cd083ab4df6f8dceff246b0aa80b614fc046b44
+   hab-shell: Blake2b Checksum: d559267af4ec1fc16cff5836c2a713143779a3a4f77becf64555bbe61557c6fb
+   hab-shell: 
+   hab-shell: I love it when a plan.sh comes together.
+   hab-shell: 
+   hab-shell: Build time: 0m49s
+
+Script done on Fri Dec 14 18:00:37 2018
