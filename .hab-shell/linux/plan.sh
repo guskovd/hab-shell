@@ -26,7 +26,6 @@ pkg_deps=(
 )
 
 do_shell() {
-    echo hello
     export PKG_CONFIG_PATH="$(hab pkg path core/libsodium)/lib/pkgconfig:$(hab pkg path core/libarchive)/lib/pkgconfig:$(hab pkg path core/openssl)/lib/pkgconfig"
     . ~/.bashrc
 }

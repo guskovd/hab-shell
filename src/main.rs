@@ -15,11 +15,22 @@ fn main() {
         .subcommand(SubCommand::with_name("exec")
                     .about("hab pkg exec wrapper")
                     .version("1.0")
-                    .arg(Arg::with_name("args")
-                         .help("optional hab pkg build args. (by default: 'bash')")
+                    .arg(Arg::with_name("command")
+                         .short("c")
+                         .long("command")
+                         .takes_value(true)
                          .multiple(true)
                          .allow_hyphen_values(true)
-                         .last(true))
+                         .help("command")
+                    )
+                    .arg(Arg::with_name("options")
+                         .help("shell options")
+                         .short("o")
+                         .long("options")
+                         .takes_value(true)
+                         .multiple(true)
+                         .allow_hyphen_values(true)
+                    )
         )
         .subcommand(SubCommand::with_name("build")
                     .arg(Arg::with_name("args")
@@ -39,8 +50,9 @@ fn main() {
     } else if let Some(_matches) = matches.subcommand_matches("install") {
         hab_shell::install::install();
     } else if let Some(matches) = matches.subcommand_matches("exec") {
-        let mut args = matches.values_of("args").unwrap_or_default().collect::<Vec<_>>();
-        hab_shell::exec::exec(args);
+        let mut options = matches.values_of("options").unwrap_or_default().collect::<Vec<_>>();
+        let mut command = matches.values_of("command").unwrap_or_default().collect::<Vec<_>>().join(" ");
+        hab_shell::exec::exec(command, options);
     }        
 }
 
