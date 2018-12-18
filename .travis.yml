@@ -1,0 +1,21 @@
+os:
+  - windows
+  - linux
+language: rust
+rust:
+  - stable
+
+script:
+  - cargo build --release
+  
+deploy:
+  - provider: releases
+    api-key: $GITHUB_TOKEN
+    file:
+      - ./target/release/hab-shell
+      - ./target/release/hab-shell.exe
+    file_glob: true
+    skip_cleanup: true
+    on:
+      tags: true
+  
