@@ -1,7 +1,7 @@
 [package]
 name = "hab-shell"
 version = "0.1.0"
-authors = ["Danil Guskov <d.guskov@corp.mail.ru>"]
+authors = ["Danil Guskov <guskovd86@mail.ru>"]
 
 [dependencies]
 clap = "=2.31.2"
