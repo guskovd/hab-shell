@@ -1,29 +1,9 @@
 extern crate clap;
 extern crate dotenv;
 extern crate habitat_core as hcore;
+extern crate hab_shell;
 
-use std::fs;
-use std::env;
-use std::path::{Path};
 use clap::{Arg, App, SubCommand};
-use std::os::unix::process::CommandExt;
-use std::process::{Command};
-use hcore::package::PackageArchive;
-
-static PLAN_SH_LOCK: &str = "plan.sh.lock";
-
-fn pkg_artifact() -> String {
-    format!("results/{}", env::var("pkg_artifact").unwrap())
-}
-
-fn load_env() {
-    let _env = dotenv::from_filename("results/last_build.env");
-}
-
-fn lock() -> std::io::Result<()> {
-    fs::copy(pkg_artifact(), PLAN_SH_LOCK)?;
-    Ok(())
-}
 
 fn main() {
     let matches = App::new("hab-shell")
@@ -52,46 +32,17 @@ fn main() {
         )
         .get_matches();
 
-
     if let Some(matches) = matches.subcommand_matches("build") {
         let mut args = matches.values_of("args").unwrap_or_default().collect::<Vec<_>>();
-        if args.is_empty() {
-            args = vec!("-R", ".");
-        }
-        println!("Building...");
-        let mut build = Command::new("hab")
-            .arg("studio")
-            .arg("build")
-            .args(args)
-            .spawn()
-            .unwrap();
-        build.wait().unwrap();
-        load_env();
-        lock().unwrap();
+        if args.is_empty() { args = vec!("-R", "."); }
+        hab_shell::build::build(args);
     } else if let Some(_matches) = matches.subcommand_matches("install") {
         println!("Installing...");
-        Command::new("sudo")
-            .arg("hab")
-            .arg("pkg")
-            .arg("install")
-            .arg(PLAN_SH_LOCK)
-            .exec();
-        
+        hab_shell::install::install();
     } else if let Some(matches) = matches.subcommand_matches("exec") {
         let mut args = matches.values_of("args").unwrap_or_default().collect::<Vec<_>>();
-        if args.is_empty() {
-            args = vec!("bash");
-        }
-        let mut hart = PackageArchive::new(Path::new(PLAN_SH_LOCK));
-        let ident = hart.ident().unwrap();
-        println!("Welcome to Habitat Shell!");
-        Command::new("hab")
-            .arg("pkg")
-            .arg("exec")
-            .arg(format!("{}/{}/{}/{}", ident.origin, ident.name, ident.version.unwrap(), ident.release.unwrap()))
-            .args(args)
-            .exec();
-    }
-
+        if args.is_empty() { args = vec!("bash"); }
+        hab_shell::exec::exec(args);
+    }        
 }
 
