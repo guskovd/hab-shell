@@ -1,6 +1,6 @@
 pub mod build;
 pub mod install;
-pub mod exec;
+pub mod shell;
 
 use std::env;
 use std::fs;

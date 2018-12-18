@@ -12,7 +12,7 @@ fn main() {
                     .about("hab pkg install wrapper")
                     .version("1.0")
         )
-        .subcommand(SubCommand::with_name("exec")
+        .subcommand(SubCommand::with_name("shell")
                     .about("hab pkg exec wrapper")
                     .version("1.0")
                     .arg(Arg::with_name("command")
@@ -49,10 +49,10 @@ fn main() {
         hab_shell::build::build(args);
     } else if let Some(_matches) = matches.subcommand_matches("install") {
         hab_shell::install::install();
-    } else if let Some(matches) = matches.subcommand_matches("exec") {
+    } else if let Some(matches) = matches.subcommand_matches("shell") {
         let mut options = matches.values_of("options").unwrap_or_default().collect::<Vec<_>>();
         let mut command = matches.values_of("command").unwrap_or_default().collect::<Vec<_>>().join(" ");
-        hab_shell::exec::exec(command, options);
+        hab_shell::shell::shell(command, options);
     }        
 }
 

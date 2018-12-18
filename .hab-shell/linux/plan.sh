@@ -1,9 +1,9 @@
-pkg_name=hab-shell
+pkg_name=hab-shell-repo
 pkg_origin=guskovd
-pkg_version='1.0.51'
-pkg_description="Habitat Shell"
+pkg_version='1.0.52'
+pkg_description="Habitat Nix shell implementation"
 pkg_maintainer='Guskovd'
-pkg_upstream_url=""
+pkg_upstream_url="https://github.com/guskovd/hab-shell"
 
 pkg_hab_shell_interpreter="bash"
 
