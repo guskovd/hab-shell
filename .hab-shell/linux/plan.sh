@@ -13,7 +13,6 @@ pkg_deps=(
     core/bash
     core/gawk
     core/grep
-    guskovd/rust-nightly
     core/git
     core/gcc
     core/gcc-libs
@@ -23,6 +22,7 @@ pkg_deps=(
     core/pkg-config
     core/libsodium
     core/libarchive
+    guskovd/rust-nightly
 )
 
 do_shell() {
