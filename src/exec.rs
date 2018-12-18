@@ -17,8 +17,10 @@ pub fn exec(command: String, options: Vec<&str>) {
     exec_args.extend(options);
     if !command.is_empty() {
         exec_args.extend(vec!("-c", &command))
+    } else { // interactive shell
+        println!("Welcome to Habitat Shell!");
     }
-    println!("Welcome to Habitat Shell!");
+    
     Command::new("hab")
         .arg("pkg")
         .arg("exec")
