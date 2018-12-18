@@ -37,11 +37,9 @@ fn main() {
         if args.is_empty() { args = vec!("-R", "."); }
         hab_shell::build::build(args);
     } else if let Some(_matches) = matches.subcommand_matches("install") {
-        println!("Installing...");
         hab_shell::install::install();
     } else if let Some(matches) = matches.subcommand_matches("exec") {
         let mut args = matches.values_of("args").unwrap_or_default().collect::<Vec<_>>();
-        if args.is_empty() { args = vec!("bash"); }
         hab_shell::exec::exec(args);
     }        
 }
