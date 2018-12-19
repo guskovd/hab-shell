@@ -1,3 +1,5 @@
+extern crate dirs;
+
 use std::process::{Command};
 
 pub fn build(args: Vec<&str>) {

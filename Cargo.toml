@@ -7,4 +7,5 @@ authors = ["Danil Guskov <guskovd86@mail.ru>"]
 clap = "=2.31.2"
 dotenv = "*"
 tempfile = "*"
+dirs = "*"
 habitat_core = { git = "https://github.com/habitat-sh/core.git" }
