@@ -1,6 +1,5 @@
 extern crate dirs;
 
-use std::path::PathBuf;
 use fs;
 
 static HAB_SHELL_PUB_NAME: &str = "hab-shell-20180516110337.pub";
@@ -15,16 +14,8 @@ hab-shell-20180516112716
 
 IJnGRn7q1xWegkTkfroOKeBmBYDPFM29ooEQRVD+/nLuu1mbzVLGaAxCoya1esMRcTXmn2V62iqTrrCMvi6wsw=="#;
 
-fn get_home() -> PathBuf {
-    let dir: PathBuf = match dirs::home_dir() {
-        Some(path) => PathBuf::from(path),
-        None => PathBuf::from(""),
-    };
-    dir
-}
-
 fn init_hab_shell_dir() {
-    let home = get_home();
+    let home = super::get_home();
     let cache_path = format!("{}/.hab-shell-test/cache/keys", home.display());
     fs::create_dir_all(&cache_path).unwrap();
     init_keys(&cache_path);

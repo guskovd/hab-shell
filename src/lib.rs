@@ -5,8 +5,17 @@ pub mod init;
 
 use std::env;
 use std::fs;
+use std::path::PathBuf;
 
 static PLAN_SH_LOCK: &str = "plan.sh.lock";
+
+fn get_home() -> PathBuf {
+    let dir: PathBuf = match dirs::home_dir() {
+        Some(path) => PathBuf::from(path),
+        None => PathBuf::from(""),
+    };
+    dir
+}
 
 fn pkg_artifact() -> String {
     format!("results/{}", env::var("pkg_artifact").unwrap())
