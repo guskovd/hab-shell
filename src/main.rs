@@ -9,7 +9,7 @@ fn main() {
     let matches = App::new("hab-shell")
         .version("1.0")
         .subcommand(SubCommand::with_name("init")
-                    .about("hab-shel init")
+                    .about("hab-shell init")
                     .version("1.0")
         )
         .subcommand(SubCommand::with_name("build")
