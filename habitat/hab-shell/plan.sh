@@ -1,7 +1,7 @@
 . ../../plan.sh
 
 pkg_name=hab-shell
-pkg_version='0.1.1'
+pkg_version='0.1.2'
 
 pkg_build_deps=(
     core/bash
@@ -9,19 +9,19 @@ pkg_build_deps=(
     core/grep
     core/git
     core/gcc
-    core/gcc-libs
     core/make
     core/clang
     core/openssl
     core/pkg-config
-    core/libsodium
-    core/libarchive
     guskovd/rust-nightly
 )
 
 pkg_deps=(
     core/sudo
     core/hab
+    core/libsodium
+    core/libarchive
+    core/gcc-libs
 )
 
 pkg_bin_dirs=(bin)
@@ -33,4 +33,8 @@ do_build() {
 
 do_install() {
     cargo install --root "${pkg_prefix}"
+}
+
+do_setup_environment() {
+    return 0
 }
