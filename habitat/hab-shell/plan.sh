@@ -1,7 +1,7 @@
 . ../../plan.sh
 
 pkg_name=hab-shell
-pkg_version='0.1.3'
+pkg_version='0.1.4'
 
 pkg_build_deps=(
     core/bash
