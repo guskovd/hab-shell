@@ -7,12 +7,12 @@ use std::os::unix::process::CommandExt;
 use std::io::{Write};
 
 pub fn shell(command: String, options: Vec<&str>) {
-    let mut hart = hcore::package::PackageArchive::new(Path::new(super::PLAN_SH_LOCK));
+    let ident = hcore::package::PackageArchive::new(Path::new(super::PLAN_SH_LOCK)).ident().unwrap();
+    super::install::install_ident(&ident);
     let hab_shell_command=". ./plan.sh; do_shell";
     let mut tmpfile = tempfile::NamedTempFile::new().unwrap();
     write!(tmpfile, "{}", hab_shell_command).unwrap();
     let path = tmpfile.into_temp_path();
-    let ident = hart.ident().unwrap();
     let mut shell_args = vec!("bash", "--rcfile", path.to_str().unwrap(), "-i");
     shell_args.extend(options);
     if !command.is_empty() {
