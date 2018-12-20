@@ -2,6 +2,7 @@ pub mod build;
 pub mod install;
 pub mod shell;
 pub mod init;
+pub mod freeze;
 
 use std::env;
 use std::fs;

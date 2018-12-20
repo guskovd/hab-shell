@@ -25,6 +25,10 @@ fn main() {
                     .about("hab pkg install wrapper")
                     .version("1.0")
         )
+        .subcommand(SubCommand::with_name("freeze")
+                    .about("hab pkg dependencies wrapper")
+                    .version("1.0")
+        )
         .subcommand(SubCommand::with_name("shell")
                     .about("hab pkg exec wrapper")
                     .version("1.0")
@@ -55,6 +59,8 @@ fn main() {
         hab_shell::build::build(args);
     } else if let Some(_matches) = matches.subcommand_matches("install") {
         hab_shell::install::install();
+    } else if let Some(_matches) = matches.subcommand_matches("freeze") {
+        hab_shell::freeze::freeze();
     } else if let Some(matches) = matches.subcommand_matches("shell") {
         let mut options = matches.values_of("options").unwrap_or_default().collect::<Vec<_>>();
         let mut command = matches.values_of("command").unwrap_or_default().collect::<Vec<_>>().join(" ");
