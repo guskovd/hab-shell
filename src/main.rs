@@ -3,11 +3,16 @@ extern crate dotenv;
 extern crate habitat_core as hcore;
 extern crate hab_shell;
 
-use clap::{Arg, App, SubCommand};
+use clap::{Arg, App, SubCommand, AppSettings};
 
 fn main() {
     let matches = App::new("hab-shell")
         .version("1.0")
+        .setting(AppSettings::ArgRequiredElseHelp)
+        .arg(Arg::with_name("v")
+             .short("v")
+             .multiple(true)
+             .help("Sets the level of verbosity"))
         .subcommand(SubCommand::with_name("init")
                     .about("hab-shell init")
                     .version("1.0")
