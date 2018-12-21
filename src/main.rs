@@ -27,6 +27,11 @@ fn main() {
         )
         .subcommand(SubCommand::with_name("freeze")
                     .about("hab pkg dependencies wrapper")
+                    .arg(Arg::with_name("transitive")
+                         .short("t")
+                         .long("transitive")
+                         .help("Show transitive dependencies")
+                    )
                     .version("1.0")
         )
         .subcommand(SubCommand::with_name("shell")
@@ -59,8 +64,12 @@ fn main() {
         hab_shell::build::build(args);
     } else if let Some(_matches) = matches.subcommand_matches("install") {
         hab_shell::install::install();
-    } else if let Some(_matches) = matches.subcommand_matches("freeze") {
-        hab_shell::freeze::freeze();
+    } else if let Some(matches) = matches.subcommand_matches("freeze") {
+        let mut is_transitive = false;
+        if matches.occurrences_of("transitive") == 1 {
+            is_transitive = true;
+        }
+        hab_shell::freeze::freeze(is_transitive);
     } else if let Some(matches) = matches.subcommand_matches("shell") {
         let mut options = matches.values_of("options").unwrap_or_default().collect::<Vec<_>>();
         let mut command = matches.values_of("command").unwrap_or_default().collect::<Vec<_>>().join(" ");
