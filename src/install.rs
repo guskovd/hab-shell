@@ -14,7 +14,7 @@ pub fn install_ident(ident: &hcore::package::PackageIdent) {
                 .arg("hab")
                 .arg("pkg")
                 .arg("install")
-                .arg(super::PLAN_SH_LOCK)
+                .arg(super::plan_lock_path())
                 .spawn()
                 .unwrap();
             inst.wait().unwrap();
@@ -24,7 +24,7 @@ pub fn install_ident(ident: &hcore::package::PackageIdent) {
 }
 
 pub fn install() {
-    let ident = hcore::package::PackageArchive::new(Path::new(super::PLAN_SH_LOCK)).ident().unwrap();
+    let ident = hcore::package::PackageArchive::new(super::plan_lock_path()).ident().unwrap();
     println!("installing {}/{}", ident.origin, ident.name);
     install_ident(&ident);
 }

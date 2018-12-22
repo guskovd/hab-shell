@@ -1,6 +1,6 @@
 [package]
 name = "hab-shell"
-version = "0.1.7"
+version = "0.1.8"
 authors = ["Danil Guskov <guskovd86@mail.ru>"]
 
 [dependencies]
