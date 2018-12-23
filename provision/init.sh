@@ -11,5 +11,7 @@ else # Windows setup
     cp -rf provision/.hab/cache c:/hab -rf
     cp -rf provision/.hab/etc c:/hab -rf
     hab pkg path $HAB_PKG || hab pkg install $HAB_PKG
+    hab pkg install core/rust
+    hab pkg exec core/rust cargo build 
 fi
 
