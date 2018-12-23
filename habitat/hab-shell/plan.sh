@@ -22,6 +22,7 @@ pkg_deps=(
     core/libsodium
     core/libarchive
     core/gcc-libs
+    core/docker
 )
 
 pkg_bin_dirs=(bin)
