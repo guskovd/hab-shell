@@ -1,0 +1,17 @@
+*.rpm
+*.pyc
+__pycache__
+.kitchen
+.gitshelf
+.kitchen.local.yml
+.DS_Store
+.pytest_cache
+/data/bin
+/habitat/results
+/results
+.bundle
+.tox
+images
+.git
+target
+/data/results

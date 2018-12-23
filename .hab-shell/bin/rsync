@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+$(hab pkg path core/rsync)/bin/rsync --exclude-from .rsyncignore "$@"

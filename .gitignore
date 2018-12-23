@@ -1,4 +1,7 @@
 /results
 target
 /target
+.bundle
+.kitchen
+/bin/
 **/*.rs.bk

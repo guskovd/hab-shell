@@ -1,0 +1,55 @@
+os_type: linux
+shell_type: bash
+
+provisioner:
+  name: shell
+  data_path: ./
+
+platforms:
+
+  - name: docker-win2012
+    os_type: linux
+    shell_type: bash
+    provisioner:
+      root_path: "C:/Users/Administrator/AppData/Local/Temp/kitchen"
+      command: pushd C:/Users/ADMINI~1/AppData/Local/Temp/kitchen/data; . provision/init.sh
+    transport:
+      name: rsync_ssh
+      username: Administrator
+      password: setup
+    driver_config:
+      name: docker
+      image: alpine
+      dockerfile: ./docker/windows.dockerfile
+      privileged: true
+      use_internal_docker_network: true
+      public_key: "<%= ENV['HOME'] %>/.ssh/id_rsa.pub"
+      private_key: "<%= ENV['HOME'] %>/.ssh/id_rsa"
+      volume:
+        - /opt/qemu:/opt/qemu
+      run_command:
+      username: Administrator
+
+  - name: docker-alpine
+    provisioner:
+      root_path: "/tmp/kitchen"
+      command: cd /tmp/kitchen/data; . provision/init.sh
+    transport:
+      name: rsync
+    driver_config:
+      name: docker
+      image: alpine
+      dockerfile: ./docker/alpine.dockerfile
+      privileged: true
+      use_internal_docker_network: true
+      run_command:
+      volume:
+        - <%= ENV['PWD'] %>:/home/kitchen/prog/my-plans
+        - <%= ENV['HOME'] %>/.hab:/home/kitchen/.hab
+        - hab_pkgs:/hab/pkgs
+        - hab_studios:/hab/studios
+        - /var/run/docker.sock:/var/run/docker.sock
+
+suites:
+  - name: default
+
