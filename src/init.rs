@@ -1,6 +1,7 @@
 extern crate dirs;
 
-use fs;
+use common;
+use std::fs;
 
 static HAB_SHELL_PUB_NAME: &str = "hab-shell-20180516110337.pub";
 static HAB_SHELL_PUB_CONTENT: &str = r#"SIG-PUB-1
@@ -15,7 +16,7 @@ hab-shell-20180516112716
 IJnGRn7q1xWegkTkfroOKeBmBYDPFM29ooEQRVD+/nLuu1mbzVLGaAxCoya1esMRcTXmn2V62iqTrrCMvi6wsw=="#;
 
 fn init_hab_shell_dir() {
-    let home = super::get_home();
+    let home = common::get_home();
     let cache_path = format!("{}/.hab-shell-test/cache/keys", home.display());
     fs::create_dir_all(&cache_path).unwrap();
     init_keys(&cache_path);

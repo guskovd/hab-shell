@@ -1,12 +1,13 @@
 extern crate dirs;
 
+use common;
 use std::process::{Command};
 
 pub fn build(args: Vec<&str>) {
     println!("Building...");
     super::init::init();
-    let root_dir = super::project_root();
-    let cache_path = format!("{}/.hab-shell-test/cache/keys", super::get_home().display());
+    let root_dir = common::project_root();
+    let cache_path = format!("{}/.hab-shell-test/cache/keys", common::get_home().display());
     let mut build = Command::new("docker")
         .arg("run")
         .arg("--rm")
@@ -32,6 +33,6 @@ pub fn build(args: Vec<&str>) {
         .spawn()
         .unwrap();
     build.wait().unwrap();
-    super::load_env();
-    super::lock().unwrap();
+    common::load_env();
+    common::lock().unwrap();
 }

@@ -1,5 +1,6 @@
 extern crate habitat_core as hcore;
 
+use common;
 use std::path::{Path};
 use std::process::{Command};
 
@@ -14,7 +15,7 @@ pub fn install_ident(ident: &hcore::package::PackageIdent) {
                 .arg("hab")
                 .arg("pkg")
                 .arg("install")
-                .arg(super::plan_lock_path())
+                .arg(common::plan_lock_path())
                 .spawn()
                 .unwrap();
             inst.wait().unwrap();
@@ -24,7 +25,7 @@ pub fn install_ident(ident: &hcore::package::PackageIdent) {
 }
 
 pub fn install() {
-    let ident = hcore::package::PackageArchive::new(super::plan_lock_path()).ident().unwrap();
+    let ident = hcore::package::PackageArchive::new(common::plan_lock_path()).ident().unwrap();
     println!("installing {}/{}", ident.origin, ident.name);
     install_ident(&ident);
 }

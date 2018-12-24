@@ -1,14 +1,15 @@
 extern crate habitat_core as hcore;
 extern crate tempfile;
 
+use common;
 use std::process::{Command};
 use std::os::unix::process::CommandExt;
 use std::io::{Write};
 
 pub fn shell(command: String, options: Vec<&str>) {
-    let ident = hcore::package::PackageArchive::new(super::plan_lock_path()).ident().unwrap();
+    let ident = hcore::package::PackageArchive::new(common::plan_lock_path()).ident().unwrap();
     super::install::install_ident(&ident);
-    let hab_shell_command=format!(". {}; do_shell", super::plan_path().to_str().unwrap());
+    let hab_shell_command=format!(". {}; do_shell", common::plan_path().to_str().unwrap());
     let mut tmpfile = tempfile::NamedTempFile::new().unwrap();
     write!(tmpfile, "{}", hab_shell_command).unwrap();
     let path = tmpfile.into_temp_path();

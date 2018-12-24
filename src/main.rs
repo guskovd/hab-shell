@@ -59,6 +59,10 @@ fn main() {
                          .allow_hyphen_values(true)
                     )
         )
+        .subcommand(SubCommand::with_name("info")
+                    .about("hab-shell info")
+                    .version("1.0")
+        )
         .get_matches();
 
     if let Some(_matches) = matches.subcommand_matches("init") {
@@ -79,6 +83,8 @@ fn main() {
         let mut options = matches.values_of("options").unwrap_or_default().collect::<Vec<_>>();
         let mut command = matches.values_of("command").unwrap_or_default().collect::<Vec<_>>().join(" ");
         hab_shell::shell::shell(command, options);
+    } else if let Some(_matches) = matches.subcommand_matches("info") {
+        hab_shell::info::info();
     }        
 }
 
