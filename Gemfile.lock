@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/amalucelli/kitchen-docker.git
-  revision: 0d482298c20b4cce963131558828ee04a705a60f
+  remote: https://github.com/guskovd/kitchen-docker.git
+  revision: 4413802277a19662e8664fd2df50807951cc3c6a
   branch: use_internal_docker_network
   specs:
     kitchen-docker (2.7.1.pre)

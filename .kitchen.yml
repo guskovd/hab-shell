@@ -20,7 +20,8 @@ platforms:
     driver_config:
       name: docker
       image: alpine
-      dockerfile: ./docker/windows.dockerfile
+      build_context: docker
+      dockerfile: <%= ENV['PWD'] %>/docker/windows.dockerfile
       privileged: true
       use_internal_docker_network: true
       public_key: "<%= ENV['HOME'] %>/.ssh/id_rsa.pub"
@@ -39,7 +40,8 @@ platforms:
     driver_config:
       name: docker
       image: alpine
-      dockerfile: ./docker/alpine.dockerfile
+      build_context: ./docker
+      dockerfile: alpine.dockerfile
       privileged: true
       use_internal_docker_network: true
       run_command:

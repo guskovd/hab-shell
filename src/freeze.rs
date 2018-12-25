@@ -4,7 +4,7 @@ use common;
 use std::path::{Path};
 
 pub fn freeze(is_transitive: bool) {
-    let ident = hcore::package::PackageArchive::new(Path::new(common::PLAN_SH_LOCK)).ident().unwrap();
+    let ident = hcore::package::PackageArchive::new(Path::new(common::config::PLAN_LOCK)).ident().unwrap();
     let pkg_install = hcore::package::PackageInstall::load(&ident, Some(Path::new("/")));
     if is_transitive {
         let deps = pkg_install.unwrap().tdeps().unwrap();

@@ -9,6 +9,6 @@ ARG qemu_img=windows2012:1.4
 
 ENV QEMU_IMG $qemu_img
 
-ADD docker/entry.sh /entry.sh
+ADD entry.sh /entry.sh
 
 CMD /entry.sh

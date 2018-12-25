@@ -5,27 +5,38 @@ use std::fs;
 use std::path::PathBuf;
 use std::path::Path;
 
-pub static PLAN_SH: &str = "plan.sh";
-pub static PLAN_SH_LOCK: &str = "plan.sh.lock";
+#[cfg(unix)]
+pub mod config {
+    pub static PLATFORM: &str = "unix";
+    pub static PLAN: &str = "plan.sh";
+    pub static PLAN_LOCK: &str = "plan.sh.lock";
+}
+
+#[cfg(windows)]
+pub mod config {
+    pub static PLATFORM: &str = "windows";
+    pub static PLAN: &str = "plan.ps1";
+    pub static PLAN_LOCK: &str = "plan.ps1.lock";
+}
 
 pub fn project_root() -> PathBuf {
     let cur_dir = env::current_dir().unwrap();
     let path = Path::new(&cur_dir);
     for ancestor in path.ancestors() {
-        let ances_manifest_path = ancestor.join(PLAN_SH);
+        let ances_manifest_path = ancestor.join(config::PLAN);
         if ances_manifest_path.exists() {
             return ancestor.to_path_buf();
         }
     }
-    panic!("{} not found", PLAN_SH)
+    panic!("{} not found", config::PLAN)
 }
 
 pub fn plan_path() -> PathBuf {
-    project_root().join(PLAN_SH)
+    project_root().join(config::PLAN)
 }
 
 pub fn plan_lock_path() -> PathBuf {
-    project_root().join(PLAN_SH_LOCK)
+    project_root().join(config::PLAN_LOCK)
 }
 
 pub fn get_home() -> PathBuf {

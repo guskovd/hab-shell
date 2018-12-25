@@ -3,7 +3,7 @@ extern crate tempfile;
 
 use common;
 use std::process::{Command};
-use std::os::unix::process::CommandExt;
+// use std::os::unix::process::CommandExt;
 use std::io::{Write};
 
 pub fn shell(command: String, options: Vec<&str>) {
@@ -21,10 +21,10 @@ pub fn shell(command: String, options: Vec<&str>) {
         println!("Welcome to Habitat Shell!");
     }
     
-    Command::new("hab")
-        .arg("pkg")
-        .arg("exec")
-        .arg(format!("{}/{}/{}/{}", ident.origin, ident.name, ident.version.unwrap(), ident.release.unwrap()))
-        .args(shell_args)
-        .exec();
+    // Command::new("hab")
+    //     .arg("pkg")
+    //     .arg("exec")
+    //     .arg(format!("{}/{}/{}/{}", ident.origin, ident.name, ident.version.unwrap(), ident.release.unwrap()))
+    //     .args(shell_args)
+    //     .exec();
 }

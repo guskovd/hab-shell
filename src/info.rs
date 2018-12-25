@@ -7,7 +7,7 @@ pub fn get_plan_path() -> String {
     let plan_path = common::plan_path();
     let plan = match plan_path.exists() {
         true => format!("{}", plan_path.to_str().unwrap()),
-        false => format!("{} not found", common::PLAN_SH)
+        false => format!("{} not found", common::config::PLAN)
     };
     plan
 }
@@ -15,7 +15,7 @@ pub fn get_plan_path() -> String {
 pub fn get_plan_lock_path_or_panic() -> String {
     let plan_path = common::plan_lock_path();
     if !plan_path.exists() {
-        panic!("{} not found!", common::PLAN_SH_LOCK)
+        panic!("{} not found!", common::config::PLAN_LOCK)
     }
     return format!("{}", plan_path.to_str().unwrap());
 }
@@ -24,7 +24,7 @@ pub fn get_plan_lock_path() -> String {
     let plan_path = common::plan_lock_path();
     let plan = match plan_path.exists() {
         true => format!("{}", plan_path.to_str().unwrap()),
-        false => format!("{} not found", common::PLAN_SH_LOCK)
+        false => format!("{} not found", common::config::PLAN_LOCK)
     };
     plan
 }
@@ -36,7 +36,7 @@ pub fn info(matches: &ArgMatches) {
         println!("{}", get_plan_lock_path_or_panic());
     } else {
         println!("Hab-shell info:");
-        println!("plan.sh: {}", get_plan_path());
-        println!("plan.sh.lock: {}", get_plan_lock_path());
+        println!("plan: {}", get_plan_path());
+        println!("plan lock: {}", get_plan_lock_path());
     }
 }
