@@ -30,7 +30,6 @@ fn unix_build_command(cache_path: String, root_dir: std::path::PathBuf, args: Ve
 
 fn windows_build_command(cache_path: String, root_dir: std::path::PathBuf, args: Vec<&str>) -> std::process::Child {
     Command::new("hab")
-        .arg("hab")
         .arg("studio")
         .arg("build")
         .args(args)
