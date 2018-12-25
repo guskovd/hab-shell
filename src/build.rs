@@ -44,8 +44,10 @@ fn windows_build_command(cache_path: String, root_dir: std::path::PathBuf, args:
 fn build_command(cache_path: String, root_dir: std::path::PathBuf, args: Vec<&str>) -> std::process::Child {
     if cfg!(target_os = "linux") {
         return unix_build_command(cache_path, root_dir, args);
-    } else {
+    } else if cfg!(target_os = "windows") {
         return windows_build_command(cache_path, root_dir, args);
+    } else {
+        panic!("unsupported platform");
     }
 }
 
