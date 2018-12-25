@@ -31,9 +31,9 @@ pub fn get_plan_lock_path() -> String {
 
 pub fn info(matches: &ArgMatches) {
     if let Some(_matches) = matches.subcommand_matches("plan") {
-        println!("plan.sh: {}", get_plan_path());
+        println!("{}", get_plan_path());
     } else  if let Some(_matches) = matches.subcommand_matches("lock") {
-        println!("plan.sh: {}", get_plan_lock_path_or_panic());
+        println!("{}", get_plan_lock_path_or_panic());
     } else {
         println!("Hab-shell info:");
         println!("plan.sh: {}", get_plan_path());
