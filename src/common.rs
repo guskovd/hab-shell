@@ -1,23 +1,13 @@
 extern crate dirs;
+extern crate dotenv;
+extern crate ini;
 
 use std::env;
 use std::fs;
 use std::path::PathBuf;
 use std::path::Path;
-
-#[cfg(unix)]
-pub mod config {
-    pub static PLATFORM: &str = "unix";
-    pub static PLAN: &str = "plan.sh";
-    pub static PLAN_LOCK: &str = "plan.sh.lock";
-}
-
-#[cfg(windows)]
-pub mod config {
-    pub static PLATFORM: &str = "windows";
-    pub static PLAN: &str = "plan.ps1";
-    pub static PLAN_LOCK: &str = "plan.ps1.lock";
-}
+use self::ini::Ini;
+use config::config;
 
 pub fn project_root() -> PathBuf {
     let cur_dir = env::current_dir().unwrap();
@@ -48,11 +38,14 @@ pub fn get_home() -> PathBuf {
 }
 
 pub fn pkg_artifact() -> String {
-    format!("{}/results/{}", project_root().to_str().unwrap(), env::var("pkg_artifact").unwrap())
+    format!("results/{}", get_build_field("pkg_artifact"))
 }
 
-pub fn load_env() {
-    let _env = dotenv::from_filename(format!("{}/results/last_build.env", project_root().to_str().unwrap()));
+pub fn get_build_field(field: &str) -> String{
+    let conf = Ini::load_from_file(format!("{}/results/{}", project_root().to_str().unwrap(), config::LAST_BUILD_ENV)).unwrap();
+    let section = conf.general_section();
+    let field_value = section.get(&format!("{}{}", config::LAST_BUILD_FIELD_PREFIX, field)).unwrap();
+    field_value.to_string()
 }
 
 pub fn lock() -> std::io::Result<()> {

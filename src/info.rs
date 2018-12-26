@@ -1,5 +1,7 @@
 extern crate clap;
 
+// use {common,config};
+use config::config;
 use common;
 use self::clap::{ArgMatches};
 
@@ -7,7 +9,7 @@ pub fn get_plan_path() -> String {
     let plan_path = common::plan_path();
     let plan = match plan_path.exists() {
         true => format!("{}", plan_path.to_str().unwrap()),
-        false => format!("{} not found", common::config::PLAN)
+        false => format!("{} not found", config::PLAN)
     };
     plan
 }
@@ -15,7 +17,7 @@ pub fn get_plan_path() -> String {
 pub fn get_plan_lock_path_or_panic() -> String {
     let plan_path = common::plan_lock_path();
     if !plan_path.exists() {
-        panic!("{} not found!", common::config::PLAN_LOCK)
+        panic!("{} not found!", config::PLAN_LOCK)
     }
     return format!("{}", plan_path.to_str().unwrap());
 }
@@ -24,7 +26,7 @@ pub fn get_plan_lock_path() -> String {
     let plan_path = common::plan_lock_path();
     let plan = match plan_path.exists() {
         true => format!("{}", plan_path.to_str().unwrap()),
-        false => format!("{} not found", common::config::PLAN_LOCK)
+        false => format!("{} not found", config::PLAN_LOCK)
     };
     plan
 }

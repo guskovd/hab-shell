@@ -57,6 +57,5 @@ pub fn build(args: Vec<&str>) {
     let cache_path = format!("{}/.hab-shell-test/cache/keys", common::get_home().display());
     let mut build = build_command(cache_path, root_dir, args);
     build.wait().unwrap();
-    common::load_env();
     common::lock().unwrap();
 }

@@ -5,3 +5,4 @@ pub mod init;
 pub mod info;
 pub mod freeze;
 pub mod common;
+pub mod config;

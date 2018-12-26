@@ -9,3 +9,4 @@ dotenv = "*"
 tempfile = "*"
 dirs = "*"
 habitat_core = { git = "https://github.com/habitat-sh/core.git" }
+rust-ini = "0.13"
