@@ -1,7 +1,7 @@
 pub mod process;
 pub mod build;
 pub mod install;
-pub mod shell;
+pub mod run;
 pub mod init;
 pub mod info;
 pub mod freeze;
