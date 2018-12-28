@@ -86,9 +86,9 @@ fn main() {
         }
         hab_shell::freeze::freeze(is_transitive);
     } else if let Some(matches) = matches.subcommand_matches("run") {
-        let mut options = matches.values_of("options").unwrap_or_default().collect::<Vec<_>>();
+        let mut _options = matches.values_of("options").unwrap_or_default().collect::<Vec<_>>();
         let mut command = matches.values_of("command").unwrap_or_default().collect::<Vec<_>>().join(" ");
-        hab_shell::run::run(command, options);
+        hab_shell::run::run(command);
     } else if let Some(matches) = matches.subcommand_matches("info") {
         hab_shell::info::info(matches);
     }        
