@@ -4,12 +4,12 @@ use shell::shell::{Shell, Executor};
 use {process,common};
 
 pub struct Bash {
-    executor: Executor
+    shell: Shell
 }
 
-impl Shell for Bash {
+impl Executor for Bash {
     fn new() -> Bash {
-        Bash { executor: Executor::new(
+        Bash { shell: Shell::new(
             "bash",
             &format!(". {}; do_shell", common::plan_path().to_str().unwrap()))
         }
@@ -17,16 +17,16 @@ impl Shell for Bash {
 
     fn exec(&self, command: String) {
         let mut tmpfile = tempfile::NamedTempFile::new().unwrap();
-        write!(tmpfile, "{}", self.executor.rc).unwrap();
+        write!(tmpfile, "{}", self.shell.rc).unwrap();
         let rcfile = tmpfile.into_temp_path();
-        let mut args = Executor::HAB_ARGS.to_vec();
-        args.push(&self.executor.ident);
+        let mut args = Shell::HAB_ARGS.to_vec();
+        args.push(&self.shell.ident);
         args.extend(vec!("bash", "--rcfile", rcfile.to_str().unwrap(), "-i"));
         if !command.is_empty() {
             args.extend(vec!("-c", &command))
         }
         process::exec(
-            Executor::HAB_BIN,
+            Shell::HAB_BIN,
             args
         );
     }

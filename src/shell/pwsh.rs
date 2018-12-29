@@ -3,23 +3,23 @@ use shell::shell::{Shell, Executor};
 use {process,common};
 
 pub struct Pwsh {
-    executor: Executor
+    shell: Shell
 }
 
-impl Shell for Pwsh {
+impl Executor for Pwsh {
     fn new() -> Pwsh {
-        Pwsh { executor: Executor::new(
+        Pwsh { shell: Shell::new(
             "pwsh",
             &format!(". {}; Invoke-Shell", common::plan_path().to_str().unwrap()))
         }
     }
     
     fn exec(&self, _command: String) {
-        let mut args = Executor::HAB_ARGS.to_vec();
-        args.push(&self.executor.ident);
-        args.extend(vec!("-NoExit", "-c", &self.executor.rc));
+        let mut args = Shell::HAB_ARGS.to_vec();
+        args.push(&self.shell.ident);
+        args.extend(vec!("-NoExit", "-c", &self.shell.rc));
         process::exec(
-            Executor::HAB_BIN,
+            Shell::HAB_BIN,
             args
         );
     }

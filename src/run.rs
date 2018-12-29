@@ -2,7 +2,7 @@ extern crate habitat_core as hcore;
 extern crate tempfile;
 
 use {common, install, config};
-use shell::{Bash,Shell, Pwsh};
+use shell::{Bash,Pwsh, Executor};
 
 pub fn run(command: String) {
     let ident = hcore::package::PackageArchive::new(common::plan_lock_path()).ident().unwrap();
