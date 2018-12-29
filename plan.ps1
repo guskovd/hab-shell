@@ -6,6 +6,10 @@ $pkg_deps=@(
     "core/powershell"
 )
 
+function Invoke-Shell {
+    echo "hello from pwsh!"
+}
+
 function Invoke-Build {
 }
 

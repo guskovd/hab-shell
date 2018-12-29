@@ -21,7 +21,8 @@ impl Executor for Bash {
         let rcfile = tmpfile.into_temp_path();
         let mut args = Shell::HAB_ARGS.to_vec();
         args.push(&self.shell.ident);
-        args.extend(vec!("bash", "--rcfile", rcfile.to_str().unwrap(), "-i"));
+        args.push(&self.shell.interpreter);
+        args.extend(vec!("--rcfile", rcfile.to_str().unwrap(), "-i"));
         if !command.is_empty() {
             args.extend(vec!("-c", &command))
         }

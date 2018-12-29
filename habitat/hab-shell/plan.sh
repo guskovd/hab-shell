@@ -42,6 +42,7 @@ do_build() {
 
 do_install() {
     cargo install --root "${pkg_prefix}"
+    ln -sf ${pkg_prefix}/bin/hab-shell ${pkg_prefix}/bin/hs
 }
 
 do_setup_environment() {

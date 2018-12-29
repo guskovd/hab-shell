@@ -49,6 +49,7 @@ function Invoke-Build {
 function Invoke-Install {
     Write-BuildLine "$HAB_CACHE_SRC_PATH/$pkg_dirname"
     Copy-Item "$env:CARGO_TARGET_DIR/release/hab-shell.exe" "$pkg_prefix/bin/hab-shell.exe"
+    cp $PLAN_CONTEXT/bin/hs.bat $pkg_prefix/bin -Recurse -Force
     # Copy-Item "$(Get-HabPackagePath "openssl")/bin/*.dll" "$pkg_prefix/bin"
     # Copy-Item "$(Get-HabPackagePath "zlib")/bin/*.dll" "$pkg_prefix/bin"
     # Copy-Item "$(Get-HabPackagePath "libarchive")/bin/*.dll" "$pkg_prefix/bin"
