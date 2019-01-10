@@ -15,7 +15,7 @@ impl Executor for Bash {
         }
     }
 
-    fn exec(&self, command: String) {
+    fn exec(&self, script: String, command: String) {
         let mut tmpfile = tempfile::NamedTempFile::new().unwrap();
         write!(tmpfile, "{}", self.shell.rc).unwrap();
         let rcfile = tmpfile.into_temp_path();
@@ -25,6 +25,9 @@ impl Executor for Bash {
         args.extend(vec!("--rcfile", rcfile.to_str().unwrap(), "-i"));
         if !command.is_empty() {
             args.extend(vec!("-c", &command))
+        }
+        if !script.is_empty() {
+            args.push(&script);
         }
         process::exec(
             Shell::HAB_BIN,

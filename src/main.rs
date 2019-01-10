@@ -43,6 +43,7 @@ fn main() {
                     .about("hab pkg exec wrapper")
                     .version("1.0")
                     .arg(Arg::with_name("command")
+                         .conflicts_with("script")
                          .short("c")
                          .long("command")
                          .takes_value(true)
@@ -50,13 +51,10 @@ fn main() {
                          .allow_hyphen_values(true)
                          .help("command")
                     )
-                    .arg(Arg::with_name("options")
-                         .help("shell options")
-                         .short("o")
-                         .long("options")
+                    .arg(Arg::with_name("script")
+                         .conflicts_with("command")
                          .takes_value(true)
-                         .multiple(true)
-                         .allow_hyphen_values(true)
+                         .help("script")
                     )
         )
         .subcommand(SubCommand::with_name("info")
@@ -86,9 +84,9 @@ fn main() {
         }
         hab_shell::freeze::freeze(is_transitive);
     } else if let Some(matches) = matches.subcommand_matches("run") {
-        let mut _options = matches.values_of("options").unwrap_or_default().collect::<Vec<_>>();
         let mut command = matches.values_of("command").unwrap_or_default().collect::<Vec<_>>().join(" ");
-        hab_shell::run::run(command);
+        let mut script = String::from(matches.value_of("script").unwrap_or_default());
+        hab_shell::run::run(script, command);
     } else if let Some(matches) = matches.subcommand_matches("info") {
         hab_shell::info::info(matches);
     }        

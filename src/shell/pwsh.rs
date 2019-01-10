@@ -14,7 +14,7 @@ impl Executor for Pwsh {
         }
     }
     
-    fn exec(&self, _command: String) {
+    fn exec(&self, _script: String, _command: String) {
         let mut args = Shell::HAB_ARGS.to_vec();
         args.push(&self.shell.ident);
         args.push(&self.shell.interpreter);

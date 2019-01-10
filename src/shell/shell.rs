@@ -26,7 +26,7 @@ impl Shell {
 
 pub trait Executor {
     fn new() -> Self;
-    fn exec(&self, command: String);
+    fn exec(&self, script: String, command: String);
 }
 
 
