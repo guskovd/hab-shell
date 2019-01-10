@@ -1,0 +1,101 @@
+Script started on 2019-01-10 16:18:15+0000
+   : Loading /src/plan.sh
+   sample-repo: Plan loaded
+   sample-repo: Validating plan metadata
+   sample-repo: Using HAB_BIN=/hab/pkgs/core/hab/0.70.0/20181205193615/bin/hab for installs, signing, and hashing
+   sample-repo: hab-plan-build setup
+   sample-repo: Writing pre_build file
+   sample-repo: Resolving build dependencies
+   sample-repo: Resolving run dependencies
+» Installing core/sudo
+☁ Determining latest version of core/sudo in the 'stable' channel
+→ Using core/sudo/1.8.18p1/20181219210923
+★ Install of core/sudo/1.8.18p1/20181219210923 complete with 0 new packages installed.
+   sample-repo: Resolved dependency 'core/sudo' to /hab/pkgs/core/sudo/1.8.18p1/20181219210923
+» Installing core/bash
+☁ Determining latest version of core/bash in the 'stable' channel
+→ Using core/bash/4.4.19/20180608092913
+★ Install of core/bash/4.4.19/20180608092913 complete with 0 new packages installed.
+   sample-repo: Resolved dependency 'core/bash' to /hab/pkgs/core/bash/4.4.19/20180608092913
+» Installing core/coreutils
+☁ Determining latest version of core/coreutils in the 'stable' channel
+→ Using core/coreutils/8.29/20180608092141
+★ Install of core/coreutils/8.29/20180608092141 complete with 0 new packages installed.
+   sample-repo: Resolved dependency 'core/coreutils' to /hab/pkgs/core/coreutils/8.29/20180608092141
+» Installing core/grep
+☁ Determining latest version of core/grep in the 'stable' channel
+→ Using core/grep/3.1/20180608092809
+★ Install of core/grep/3.1/20180608092809 complete with 0 new packages installed.
+   sample-repo: Resolved dependency 'core/grep' to /hab/pkgs/core/grep/3.1/20180608092809
+» Installing core/gawk
+☁ Determining latest version of core/gawk in the 'stable' channel
+→ Using core/gawk/4.2.0/20180608093856
+★ Install of core/gawk/4.2.0/20180608093856 complete with 0 new packages installed.
+   sample-repo: Resolved dependency 'core/gawk' to /hab/pkgs/core/gawk/4.2.0/20180608093856
+» Installing core/findutils
+☁ Determining latest version of core/findutils in the 'stable' channel
+→ Using core/findutils/4.6.0/20180608095924
+★ Install of core/findutils/4.6.0/20180608095924 complete with 0 new packages installed.
+   sample-repo: Resolved dependency 'core/findutils' to /hab/pkgs/core/findutils/4.6.0/20180608095924
+» Installing core/which
+☁ Determining latest version of core/which in the 'stable' channel
+→ Using core/which/2.21/20180608164236
+★ Install of core/which/2.21/20180608164236 complete with 0 new packages installed.
+   sample-repo: Resolved dependency 'core/which' to /hab/pkgs/core/which/2.21/20180608164236
+» Installing core/python
+☁ Determining latest version of core/python in the 'stable' channel
+→ Using core/python/3.7.0/20181212185222
+★ Install of core/python/3.7.0/20181212185222 complete with 0 new packages installed.
+   sample-repo: Resolved dependency 'core/python' to /hab/pkgs/core/python/3.7.0/20181212185222
+   sample-repo: Setting up environment
+   sample-repo: Populating runtime environment from dependencies
+   sample-repo: Populating buildtime environment from dependencies
+   sample-repo: Layering runtime environment on top of system environment
+   sample-repo: Layering buildtime environment on top of system environment
+   sample-repo: Setting PATH=/hab/pkgs/core/sudo/1.8.18p1/20181219210923/bin:/hab/pkgs/core/sudo/1.8.18p1/20181219210923/sbin:/hab/pkgs/core/bash/4.4.19/20180608092913/bin:/hab/pkgs/core/coreutils/8.29/20180608092141/bin:/hab/pkgs/core/grep/3.1/20180608092809/bin:/hab/pkgs/core/gawk/4.2.0/20180608093856/bin:/hab/pkgs/core/findutils/4.6.0/20180608095924/bin:/hab/pkgs/core/which/2.21/20180608164236/bin:/hab/pkgs/core/python/3.7.0/20181212185222/bin:/hab/pkgs/core/acl/2.2.52/20180608091922/bin:/hab/pkgs/core/attr/2.4.47/20180608091914/bin:/hab/pkgs/core/glibc/2.27/20180608041157/bin:/hab/pkgs/core/libcap/2.25/20180608091936/bin:/hab/pkgs/core/ncurses/6.1/20180608091810/bin:/hab/pkgs/core/vim/8.1.0577/20181219210623/bin:/hab/pkgs/core/pcre/8.41/20180608092740/bin:/hab/pkgs/core/binutils/2.30/20180608050633/bin:/hab/pkgs/core/bzip2/1.0.6/20180608091727/bin:/hab/pkgs/core/expat/2.2.5/20180608094017/bin:/hab/pkgs/core/gdbm/1.14.1/20180608094002/bin:/hab/pkgs/core/libtool/2.4.6/20180608093951/bin:/hab/pkgs/core/openssl/1.0.2q/20181212183918/bin:/hab/pkgs/core/sed/4.4/20180608091938/bin:/hab/pkgs/core/sqlite/3130000/20180608141313/bin:/hab/pkgs/core/hab-plan-build/0.70.0/20181205195415/bin:/hab/pkgs/core/bash/4.4.19/20180608092913/bin:/hab/pkgs/core/binutils/2.30/20180608050633/bin:/hab/pkgs/core/bzip2/1.0.6/20180608091727/bin:/hab/pkgs/core/coreutils/8.29/20180608092141/bin:/hab/pkgs/core/file/5.32/20180608050620/bin:/hab/pkgs/core/findutils/4.6.0/20180608095924/bin:/hab/pkgs/core/gawk/4.2.0/20180608093856/bin:/hab/pkgs/core/grep/3.1/20180608092809/bin:/hab/pkgs/core/gzip/1.9/20180608100716/bin:/hab/pkgs/core/hab/0.70.0/20181205193615/bin:/hab/pkgs/core/rq/0.10.4/20180608102648/bin:/hab/pkgs/core/sed/4.4/20180608091938/bin:/hab/pkgs/core/tar/1.30/20180608093304/bin:/hab/pkgs/core/unzip/6.0/20180608102645/bin:/hab/pkgs/core/wget/1.19.4/20180608102523/bin:/hab/pkgs/core/xz/5.2.3/20180608100110/bin:/hab/pkgs/core/glibc/2.27/20180608041157/bin:/hab/pkgs/core/ncurses/6.1/20180608091810/bin:/hab/pkgs/core/acl/2.2.52/20180608091922/bin:/hab/pkgs/core/attr/2.4.47/20180608091914/bin:/hab/pkgs/core/libcap/2.25/20180608091936/bin:/hab/pkgs/core/pcre/8.41/20180608092740/bin:/hab/pkgs/core/less/530/20180608094202/bin:/hab/pkgs/core/openssl/1.0.2n/20180608102213/bin
+   sample-repo: Clean the cache
+   sample-repo: Setting build environment
+mkdir: created directory '/hab/cache/src/sample-repo-1.0.0'
+   sample-repo: Setting PREFIX=/hab/pkgs/hab-shell/sample-repo/1.0.0/20190110161815
+   sample-repo: Setting LD_RUN_PATH=/hab/pkgs/core/python/3.7.0/20181212185222/lib
+   sample-repo: Setting CFLAGS=-I/hab/pkgs/core/sudo/1.8.18p1/20181219210923/include -I/hab/pkgs/core/python/3.7.0/20181212185222/include
+   sample-repo: Setting CXXFLAGS=-I/hab/pkgs/core/sudo/1.8.18p1/20181219210923/include -I/hab/pkgs/core/python/3.7.0/20181212185222/include
+   sample-repo: Setting CPPFLAGS=-I/hab/pkgs/core/sudo/1.8.18p1/20181219210923/include -I/hab/pkgs/core/python/3.7.0/20181212185222/include
+   sample-repo: Setting LDFLAGS=-L/hab/pkgs/core/python/3.7.0/20181212185222/lib
+   sample-repo: Setting PKG_CONFIG_PATH=/hab/pkgs/core/bash/4.4.19/20180608092913/lib/pkgconfig:/hab/pkgs/core/python/3.7.0/20181212185222/lib/pkgconfig
+   sample-repo: Preparing to build
+   sample-repo: Building
+   sample-repo: Installing
+mkdir: created directory '/hab/pkgs/hab-shell/sample-repo/1.0.0/20190110161815'
+   sample-repo: Writing configuration
+   sample-repo: Writing service management scripts
+   sample-repo: Stripping unneeded symbols from binaries and libraries
+   sample-repo: Building package metadata
+   sample-repo: Generating blake2b hashes of all files in the package
+   sample-repo: Generating signed metadata FILES
+» Signing sample-repo_blake2bsums
+☛ Signing sample-repo_blake2bsums with hab-shell-20180516112716 to create /hab/pkgs/hab-shell/sample-repo/1.0.0/20190110161815/FILES
+★ Signed artifact /hab/pkgs/hab-shell/sample-repo/1.0.0/20190110161815/FILES.
+   sample-repo: Creating manifest
+   sample-repo: Generating package artifact
+/hab/pkgs/core/tar/1.30/20180608093304/bin/tar: Removing leading `/' from member names
+/hab/cache/artifacts/.hab-shell-sample-repo-1.0.0-20190110161815-x86_64-linux.tar (1/1)
+  100 %           2088 B / 20.0 KiB = 0.102                                    
+» Signing /hab/cache/artifacts/.hab-shell-sample-repo-1.0.0-20190110161815-x86_64-linux.tar.xz
+☛ Signing /hab/cache/artifacts/.hab-shell-sample-repo-1.0.0-20190110161815-x86_64-linux.tar.xz with hab-shell-20180516112716 to create /hab/cache/artifacts/hab-shell-sample-repo-1.0.0-20190110161815-x86_64-linux.hart
+★ Signed artifact /hab/cache/artifacts/hab-shell-sample-repo-1.0.0-20190110161815-x86_64-linux.hart.
+'/hab/cache/artifacts/hab-shell-sample-repo-1.0.0-20190110161815-x86_64-linux.hart' -> '/src/results/hab-shell-sample-repo-1.0.0-20190110161815-x86_64-linux.hart'
+   sample-repo: hab-plan-build cleanup
+   sample-repo: 
+   sample-repo: Source Path: /src
+   sample-repo: Installed Path: /hab/pkgs/hab-shell/sample-repo/1.0.0/20190110161815
+   sample-repo: Artifact: /src/results/hab-shell-sample-repo-1.0.0-20190110161815-x86_64-linux.hart
+   sample-repo: Build Report: /src/results/last_build.env
+   sample-repo: SHA256 Checksum: 4f2279da4f74b137c9c3c3a352ee2e576d01e14f09dd8444fb84a47a30fbeff1
+   sample-repo: Blake2b Checksum: 662d5a1ae527c328c02feca01f627af893469f359390a23c4d4e07828ddc28a4
+   sample-repo: 
+   sample-repo: I love it when a plan.sh comes together.
+   sample-repo: 
+   sample-repo: Build time: 0m4s
+
+Script done on 2019-01-10 16:18:19+0000

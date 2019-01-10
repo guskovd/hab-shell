@@ -1,22 +1,3 @@
-# Welcome to hab-shell - Habitat Nix shell implementation.
-
-## Installation via habitat.sh:
-
-```bash
-sudo hab pkg install guskovd/hab-shell
-```
-
-## Create binkink in /usr/local/bin:
-
-```bash
-sudo unlink /usr/local/bin/hs
-```
-
-## Usage:
-
-### Create plan.sh containing:
-
-```bash
 pkg_name=sample-repo
 pkg_origin=guskovd
 pkg_version=1.0.0
@@ -50,7 +31,7 @@ do_shell() {
     venvs_path="$(realpath ~)/.virtualenvs"
     mkdir -p $venvs_path
     
-    venv="$venvs_path/gsf"
+    venv="$venvs_path/sample-repo"
     
     if [ ! -d $venv ]; then
     	python -m venv $venv
@@ -60,23 +41,3 @@ do_shell() {
 
     . ~/.bashrc # load you .bashrc
 }
-
-```
-
-### Build
-```
-hs build
-```
-
-### Run it!
-```
-hs shell
-```
-
-### Test:
-```
-which python
-/home/guskov/.virtualenvs/sample-repo/bin/python
-```
-
-this example is available in sample subfolder
