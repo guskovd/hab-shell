@@ -9,7 +9,7 @@ sudo hab pkg install guskovd/hab-shell
 ## Create binkink in /usr/local/bin:
 
 ```bash
-sudo unlink /usr/local/bin/hs
+sudo hab pkg binlink guskovd/hab-shell -d /usr/local/bin hs
 ```
 
 ## Usage:
