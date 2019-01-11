@@ -58,7 +58,7 @@ do_shell() {
     
     . $venv/bin/activate
 
-    . ~/.bashrc # load you .bashrc
+    . ~/.bashrc # load your .bashrc
 }
 
 ```
