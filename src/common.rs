@@ -38,7 +38,7 @@ pub fn get_home() -> PathBuf {
 }
 
 pub fn pkg_artifact() -> String {
-    format!("results/{}", get_build_field("pkg_artifact"))
+    format!("{}/results/{}", project_root().to_str().unwrap(), get_build_field("pkg_artifact"))
 }
 
 pub fn get_build_field(field: &str) -> String{
