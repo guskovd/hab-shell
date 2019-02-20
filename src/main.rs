@@ -1,7 +1,6 @@
 extern crate clap;
 extern crate dotenv;
 extern crate habitat_core as hcore;
-extern crate hab_shell;
 
 use clap::{Arg, App, SubCommand, AppSettings};
 
