@@ -70,7 +70,7 @@ hs build
 
 ### Run it!
 ```
-hs shell
+hs run
 ```
 
 ### Test:
