@@ -1,6 +1,5 @@
 extern crate clap;
 
-// use {common,config};
 use config::config;
 use common;
 use self::clap::{ArgMatches};
