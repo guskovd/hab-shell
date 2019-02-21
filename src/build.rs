@@ -54,7 +54,7 @@ pub fn build(args: Vec<&str>) {
     println!("Building...");
     super::init::init();
     let root_dir = common::project_root();
-    let cache_path = format!("{}/.hab-shell-test/cache/keys", common::get_home().display());
+    let cache_path = format!("{}/.hab-shell/cache/keys", common::get_home().display());
     let mut build = build_command(cache_path, root_dir, args);
     build.wait().unwrap();
     common::lock().unwrap();

@@ -17,7 +17,7 @@ IJnGRn7q1xWegkTkfroOKeBmBYDPFM29ooEQRVD+/nLuu1mbzVLGaAxCoya1esMRcTXmn2V62iqTrrCM
 
 fn init_hab_shell_dir() {
     let home = common::get_home();
-    let cache_path = format!("{}/.hab-shell-test/cache/keys", home.display());
+    let cache_path = format!("{}/.hab-shell/cache/keys", home.display());
     fs::create_dir_all(&cache_path).unwrap();
     init_keys(&cache_path);
 }
