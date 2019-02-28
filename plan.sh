@@ -30,9 +30,12 @@ pkg_deps=(
     core/sshpass
     guskovd/rust-nightly
     guskovd/rust-racer
+    guskovd/rustup
 )
 
 do_shell() {
+    export RUST_SRC_PATH=$HOME/rust/src/
+    export CARGO_HOME=$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.cargo
     export PKG_CONFIG_PATH="$(hab pkg path core/libsodium)/lib/pkgconfig:$(hab pkg path core/libarchive)/lib/pkgconfig:$(hab pkg path core/openssl)/lib/pkgconfig"
 
     ruby_bundle_path=$HOME/.hab-shell/ruby/bundle/$RUBY_VERSION
