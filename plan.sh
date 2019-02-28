@@ -34,8 +34,6 @@ pkg_deps=(
 )
 
 do_shell() {
-    export RUST_SRC_PATH=$HOME/rust/src/
-    export CARGO_HOME=$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.cargo
     export PKG_CONFIG_PATH="$(hab pkg path core/libsodium)/lib/pkgconfig:$(hab pkg path core/libarchive)/lib/pkgconfig:$(hab pkg path core/openssl)/lib/pkgconfig"
 
     ruby_bundle_path=$HOME/.hab-shell/ruby/bundle/$RUBY_VERSION
@@ -51,6 +49,19 @@ do_shell() {
     export PATH="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/bin:$PATH"
     
     . ~/.bashrc
+}
+
+local_rust() {
+    export CARGO_HOME=$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.cargo
+    
+    plan_path="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    mkdir -p $plan_path/.rust
+    commit=$(rustc -v --version | grep commit-hash | awk '{print $2}')
+    if [[ ! -d $plan_path/.rust/rust-$commit ]]; then
+	wget https://github.com/rust-lang/rust/archive/${commit}.zip -O /tmp/${commit}.zip
+	unzip -qq /tmp/${commit}.zip -d $plan_path/.rust
+    fi
+    export RUST_SRC_PATH=$plan_path/.rust/rust-$commit/src/
 }
 
 do_build() {

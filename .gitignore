@@ -1,4 +1,5 @@
 /.cargo
+/.rust
 /results
 target
 /target
