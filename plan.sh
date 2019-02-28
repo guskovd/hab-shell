@@ -29,6 +29,7 @@ pkg_deps=(
     core/rsync
     core/sshpass
     guskovd/rust-nightly
+    guskovd/rust-racer
 )
 
 do_shell() {
