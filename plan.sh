@@ -30,25 +30,27 @@ pkg_deps=(
     core/sshpass
     guskovd/rust-nightly
     guskovd/rust-racer
-    guskovd/rustup
 )
 
 do_shell() {
+    local_rust
+    
     export PKG_CONFIG_PATH="$(hab pkg path core/libsodium)/lib/pkgconfig:$(hab pkg path core/libarchive)/lib/pkgconfig:$(hab pkg path core/openssl)/lib/pkgconfig"
-
-    ruby_bundle_path=$HOME/.hab-shell/ruby/bundle/$RUBY_VERSION
-
-    mkdir -p $ruby_bundle_path
-    export BUNDLE_PATH=$ruby_bundle_path
-
-    pushd "$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" > /dev/null
-    bundle install --binstubs > /dev/null
-    popd > /dev/null
+    export BUNDLE_PATH=$HOME/.hab-shell/ruby/bundle/$RUBY_VERSION
 
     export PATH="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.hab-shell/bin:$PATH"
     export PATH="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/bin:$PATH"
     
     . ~/.bashrc
+}
+
+ruby_setup () {
+    ruby_bundle_path=$HOME/.hab-shell/ruby/bundle/$RUBY_VERSION
+    mkdir -p $ruby_bundle_path
+
+    pushd "$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" > /dev/null
+    bundle install --binstubs
+    popd > /dev/null
 }
 
 local_rust() {
