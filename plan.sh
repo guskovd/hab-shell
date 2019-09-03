@@ -10,26 +10,26 @@ pkg_hab_shell_interpreter="bash"
 RUBY_VERSION=2.5.1
 
 pkg_deps=(
-    core/sudo
-    core/hab
-    core/bash
-    core/gawk
-    core/grep
-    core/git
-    core/gcc
-    core/gcc-libs
-    core/make
-    core/clang
-    core/openssl
-    core/pkg-config
-    core/libsodium
-    core/libarchive
-    core/ruby/$RUBY_VERSION
-    core/docker
-    core/rsync
-    core/sshpass
-    guskovd/rust-nightly
-    guskovd/rust-racer
+    core/bash/4.4.19/20190115012619
+    core/clang/7.0.1/20190226032334
+    core/docker/18.03.0/20190117151003
+    core/gawk/4.2.1/20190115012752
+    core/gcc-libs/8.2.0/20190115011926
+    core/gcc/8.2.0/20190115004042
+    core/git/2.20.1/20190223005329
+    core/grep/3.1/20190115012541
+    core/hab/0.75.0/20190219230858
+    core/libarchive/3.3.3/20190209002803
+    core/libsodium/1.0.16/20190116014025
+    core/make/4.2.1/20190115013626
+    core/openssl/1.0.2q/20190115014220
+    core/pkg-config/0.29.2/20190115011955
+    core/rsync/3.1.2/20190115215406
+    core/ruby/2.5.1/20190130035618
+    core/sshpass/1.06/20190115233635
+    core/sudo/1.8.18p1/20190117185055
+    guskovd/rust-nightly/1.34.0-2019-02-26/20190227151059
+    guskovd/rust-racer/2.1.19/20190228121750
 )
 
 do_shell() {
