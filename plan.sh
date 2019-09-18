@@ -28,20 +28,26 @@ pkg_deps=(
     core/ruby/2.5.1/20190130035618
     core/sshpass/1.06/20190115233635
     core/sudo/1.8.18p1/20190117185055
-    guskovd/rust-nightly/1.34.0-2019-02-26/20190227151059
-    guskovd/rust-racer/2.1.19/20190228121750
+    guskovd/rustup/1.19.0/20190917154527
+    guskovd/rust-racer/2.1.27/20190917152749
 )
 
 do_shell() {
-    local_rust
+    plan_path="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     
     export PKG_CONFIG_PATH="$(hab pkg path core/libsodium)/lib/pkgconfig:$(hab pkg path core/libarchive)/lib/pkgconfig:$(hab pkg path core/openssl)/lib/pkgconfig"
     export BUNDLE_PATH=$HOME/.hab-shell/ruby/bundle/$RUBY_VERSION
 
     export PATH="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.hab-shell/bin:$PATH"
     export PATH="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/bin:$PATH"
+    export PATH="${plan_path}/.hab-shell/bin:${plan_path}/.cargo/bin:$PATH"
+
+    export CARGO_HOME=${plan_path}/.cargo
+    export RUSTUP_HOME=${plan_path}/.rustup
     
     . ~/.bashrc
+
+    export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 }
 
 ruby_setup () {
@@ -53,17 +59,11 @@ ruby_setup () {
     popd > /dev/null
 }
 
-local_rust() {
-    export CARGO_HOME=$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.cargo
+rustup_setup() {
+    rustup-init -y
     
-    plan_path="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-    mkdir -p $plan_path/.rust
-    commit=$(rustc -v --version | grep commit-hash | awk '{print $2}')
-    if [[ ! -d $plan_path/.rust/rust-$commit ]]; then
-	wget https://github.com/rust-lang/rust/archive/${commit}.zip -O /tmp/${commit}.zip
-	unzip -qq /tmp/${commit}.zip -d $plan_path/.rust
-    fi
-    export RUST_SRC_PATH=$plan_path/.rust/rust-$commit/src/
+    rustup update
+    rustup component add rls rust-analysis rust-src
 }
 
 do_build() {
