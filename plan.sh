@@ -10,24 +10,25 @@ pkg_hab_shell_interpreter="bash"
 RUBY_VERSION=2.5.1
 
 pkg_deps=(
-    core/bash/4.4.19/20190115012619
-    core/clang/7.0.1/20190226032334
-    core/docker/18.03.0/20190117151003
-    core/gawk/4.2.1/20190115012752
-    core/gcc-libs/8.2.0/20190115011926
-    core/gcc/8.2.0/20190115004042
-    core/git/2.20.1/20190223005329
-    core/grep/3.1/20190115012541
+    core/bash
+    core/gawk
+    core/grep
+    core/git
+    core/musl
+    core/zlib-musl
+    core/xz-musl
+    core/bzip2-musl
+    core/libarchive-musl
+    core/openssl-musl
+    core/libsodium-musl
+    core/coreutils
+    core/gcc
+    core/pkg-config
+    core/rsync
+    core/ruby
+    core/sshpass
+    core/sudo
     core/hab/0.75.0/20190219230858
-    core/libarchive/3.3.3/20190209002803
-    core/libsodium/1.0.16/20190116014025
-    core/make/4.2.1/20190115013626
-    core/openssl/1.0.2q/20190115014220
-    core/pkg-config/0.29.2/20190115011955
-    core/rsync/3.1.2/20190115215406
-    core/ruby/2.5.1/20190130035618
-    core/sshpass/1.06/20190115233635
-    core/sudo/1.8.18p1/20190117185055
     guskovd/rustup/1.19.0/20190917154527
     guskovd/rust-racer/2.1.27/20190917152749
 )
@@ -41,6 +42,23 @@ do_shell() {
     export PATH="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.hab-shell/bin:$PATH"
     export PATH="$( builtin cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/bin:$PATH"
     export PATH="${plan_path}/.hab-shell/bin:${plan_path}/.cargo/bin:$PATH"
+
+    la_ldflags="-L$(hab pkg path core/zlib-musl)/lib -lz"
+    la_ldflags="$la_ldflags -L$(hab pkg path core/xz-musl)/lib -llzma"
+    la_ldflags="$la_ldflags -L$(hab pkg path core/bzip2-musl)/lib -lbz2"
+    la_ldflags="$la_ldflags -L$(hab pkg path core/openssl-musl)/lib -lssl -lcrypto"
+    
+    export LIBARCHIVE_LIB_DIR=$(hab pkg path core/libarchive-musl)/lib
+    export LIBARCHIVE_INCLUDE_DIR=$(hab pkg path core/libarchive-musl)/include
+    export LIBARCHIVE_LDFLAGS="$la_ldflags"
+    export LIBARCHIVE_STATIC=true
+    export OPENSSL_LIB_DIR=$(hab pkg path core/openssl-musl)/lib
+    export OPENSSL_INCLUDE_DIR=$(hab pkg path core/openssl-musl)/include
+    export OPENSSL_STATIC=true
+    export SODIUM_LIB_DIR=$(hab pkg path core/libsodium-musl)/lib
+    export SODIUM_STATIC=true
+
+    export LD_LIBRARY_PATH=$(hab pkg path core/gcc)/lib
 
     export CARGO_HOME=${plan_path}/.cargo
     export RUSTUP_HOME=${plan_path}/.rustup
